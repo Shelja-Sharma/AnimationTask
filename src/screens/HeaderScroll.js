@@ -98,7 +98,7 @@ const HeaderScroll = ({navigation}) => {
 
             <Animated.View style={{ transform: [{ translateY: translateHeaderY }], elevation: 4, zIndex: 100 }}>
                 <View style={{ marginTop: 45, position: 'absolute', left: 0, right: 0, top: 0, height: 45, width: responsiveWidth(100), backgroundColor: 'maroon', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: responsiveFontSize(2), color: 'white' }}>Sub Header</Text>
+                    <Text style={{ fontSize: responsiveFontSize(2), color: 'white' }}>Sub Header is t</Text>
                 </View>
             </Animated.View>
             <Animated.FlatList
