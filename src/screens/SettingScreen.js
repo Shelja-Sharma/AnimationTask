@@ -6,6 +6,7 @@ const SettingScreen = ()=>{
     return(
         <View style ={{alignItems:"center",height:responsiveHeight(100)}}>
             <Image source = {require("../assets/images/image4.png")} style = {{width:responsiveWidth(30),height:responsiveHeight(30)}} resizeMode ='contain' />
+            <Text>Hello master branch changes</Text>
         </View>
     )
 }
