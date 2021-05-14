@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
-import { Animated, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
+import { Animated, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 
-const HeaderScroll = ({navigation}) => {
+const HeaderScroll = ({ navigation }) => {
 
     const Spacing = 20
     const AvatarSize = 70
@@ -74,9 +74,12 @@ const HeaderScroll = ({navigation}) => {
         })
 
         return (
-            <TouchableOpacity onPress = {()=>navigation.navigate("UserProfile")}>
-         
-                <Animated.View style={{ transform: [{ scale }], opacityY, flexDirection: 'row', backgroundColor: 'lightblue', borderRadius: 20, padding: Spacing, marginBottom: Spacing }}>
+            <TouchableOpacity onPress={() => navigation.navigate("UserProfile")}>
+
+                <Animated.View style={[{ transform: [{ scale }] }, opacityY, {
+                    padding: Spacing,
+                    marginBottom: Spacing
+                }, styles.animatedViewStyle]}>
                     <Image source={item.pic} style={{ marginRight: Spacing / 2, width: AvatarSize, height: AvatarSize, borderRadius: AvatarSize }} />
                     <View>
                         <Text style={{ fontSize: responsiveFontSize(2.5), fontWeight: 'bold' }}>{item.title}</Text>
@@ -88,29 +91,55 @@ const HeaderScroll = ({navigation}) => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        <View style={styles.container}>
             <Animated.View style={{ transform: [{ translateY: translateHeaderY }], elevation: 4, zIndex: 100 }}>
-                <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 45, width: responsiveWidth(100), backgroundColor: 'lightcoral', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: responsiveFontSize(3),color:'white' }}>Welcome</Text>
+                <View style={styles.headingStyle}>
+                    <Text style={{ fontSize: responsiveFontSize(3), color: 'white' }}>Welcome</Text>
                 </View>
 
             </Animated.View>
 
             <Animated.View style={{ transform: [{ translateY: translateHeaderY }], elevation: 4, zIndex: 100 }}>
-                <View style={{ marginTop: 45, position: 'absolute', left: 0, right: 0, top: 0, height: 45, width: responsiveWidth(100), backgroundColor: 'maroon', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: responsiveFontSize(2), color: 'white' }}>Sub Header is this and scroll up</Text>
+               
+                <View style={[styles.headingStyle, { marginTop: 45, backgroundColor: "maroon" }]}>
+                    <Text style={{ fontSize: responsiveFontSize(2), color: 'white' }}>Sub Header</Text>
                 </View>
             </Animated.View>
             <Animated.FlatList
-
                 onScroll={(e) => {
                     scrollY.setValue(e.nativeEvent.contentOffset.y),
-                    headerY.setValue(e.nativeEvent.contentOffset.y)
+                        headerY.setValue(e.nativeEvent.contentOffset.y)
                 }}
-                data={data} renderItem={renderDataItem} contentContainerStyle={{ padding: Spacing, paddingTop: 100 }} />
+                data={data}
+                renderItem={renderDataItem}
+                contentContainerStyle={{ padding: Spacing, paddingTop: 100 }} />
 
         </View>
     )
 }
 
 export default HeaderScroll
+
+const styles = StyleSheet.create({
+    container:{
+         flex: 1, 
+         backgroundColor: '#fff' 
+    },
+    headingStyle: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: 45,
+        width: responsiveWidth(100),
+        backgroundColor: 'lightcoral',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    animatedViewStyle: {
+        flexDirection: 'row',
+        backgroundColor: 'lightblue',
+        borderRadius: 20,
+
+    }
+})
