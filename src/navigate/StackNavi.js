@@ -6,6 +6,8 @@ import DragDrop from '../screens/DragDrop';
 import NewDragDrop from '../screens/NewDragDrop';
 import DragFlatList from '../screens/DragFlatList';
 import UserProfile from '../screens/UserProfile';
+import HomeScreen from '../screens/HomeScreen';
+import SettingScreen from '../screens/SettingScreen';
 
 
 const stack = createStackNavigator()
@@ -18,6 +20,8 @@ const StackNavi = ()=>{
                 <stack.Screen name = "NewDragDrop" component = {NewDragDrop} />
                 <stack.Screen name = "DragFlatList" component = {DragFlatList} />
                 <stack.Screen name = "UserProfile" component = {UserProfile} />
+                <stack.Screen name="Home" component={HomeScreen} />
+                <stack.Screen name="Settings" component={SettingScreen} /> 
                 
             </stack.Navigator>
         </NavigationContainer>

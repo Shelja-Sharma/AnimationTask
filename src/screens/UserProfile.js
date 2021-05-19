@@ -302,6 +302,7 @@ const UserProfile = () => {
         onScroll={(e) => {
           console.log("animation value is", e.nativeEvent.contentOffset)
           ballAnimatedValue.setValue(e.nativeEvent.contentOffset.y),
+          // ballAnimatedValue.setValue(e.nativeEvent.)
             nameAnimatedValue.setValue(e.nativeEvent.contentOffset.y)
         }}
       // onScroll = {event}
